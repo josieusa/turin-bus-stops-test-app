@@ -1,0 +1,136 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Test
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /public/stops:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: stops
+    get:
+      description: Returns paginated stops data
+      # used as the method name of the controller
+      operationId: stops
+      parameters:
+        - name: limit
+          in: query
+          description: The query limit
+          required: false
+          type: number
+        - name: offset
+          in: query
+          description: The query offset
+          required: false
+          type: number
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+  /public/departures:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: departures
+    get:
+      description: Returns departures data for the stop
+      # used as the method name of the controller
+      operationId: departures
+      parameters:
+        - name: stopId
+          in: query
+          description: The stop id
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+  /public/maps:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: maps
+    get:
+      description: Returns static map URIs
+      # used as the method name of the controller
+      operationId: maps
+      parameters:
+        - name: coordinates
+          in: query
+          description: The coordinates
+          required: false
+          type: array
+          items:
+            type: string
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+  /public/{filename}:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: public
+    get:
+      description: Returns public file
+      # used as the method name of the controller
+      operationId: public
+      parameters:
+        - name: filename
+          in: path
+          description: The filename
+          required: true
+          type: string
+        - name: auth-token
+          in: query
+          description: The authorization token
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+  /public/login:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: login
+    post:
+      description: Returns login response
+      # used as the method name of the controller
+      operationId: login
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: username
+          in: formData
+          description: The username
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: The password
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+        default:
+          description: Error
+  /swagger:
+    x-swagger-pipe: swagger_raw

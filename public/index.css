@@ -1,0 +1,50 @@
+.stop-item-name, .stop-item-location {
+	text-transform: uppercase;
+}
+#left-col-stops #stops-group {
+	height: 760px;
+	overflow-y: scroll;
+}
+
+#right-col-departures #departures-group {
+	width: 95%; /* show scrollbar at low res */
+	height: 400px;
+	overflow-y: scroll;
+}
+
+body {
+	overflow: hidden;
+}
+.stop-item-container {
+	cursor: pointer;
+	font-weight: bold;
+}
+.stop-item-container:hover {
+	background-color: azure;
+}
+.col-sm-6 {
+	padding: 0;
+}
+
+#right-col-map {
+	width: 100%;
+	text-align: center;
+}
+
+#right-col-map > img {
+	max-width: 500px;
+	width: 100%;
+}
+#left-col-list #list-group {
+	height: 800px;
+	overflow-y: scroll;
+}
+#page-controls {
+	padding: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+#prev[disabled] {
+	cursor: not-allowed;
+}

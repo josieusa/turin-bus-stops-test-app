@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orari di passaggio in fermata</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-theme.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand">
+					<h1>Orari di passaggio in fermata</h1>
+				</a>
+			</div>
+		</div>
+	</nav>
+	<div class="row" id="main-container">
+		<div class="col-sm-6">
+			<div id="page-controls">
+				<span id="prev" class="btn btn-primary disabled" disabled>< Precedente</span>
+				<span id="next" class="btn btn-primary">Successiva ></span>
+			</div>
+			<div id="left-col-stops"></div>
+		</div>
+		<div class="col-sm-6">
+			<div id="right-col-map"></div>
+			<div id="right-col-departures"></div>
+		</div>
+	</div>
+    <script src="yo-yo.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
